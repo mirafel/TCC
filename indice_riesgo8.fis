@@ -1,0 +1,72 @@
+[System]
+Name='indice_riesgo8'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=29
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='IndiceSalud'
+Range=[0 1]
+NumMFs=5
+MF1='MuyBueno':'trapmf',[0 0 0 0.25]
+MF2='Bueno':'trimf',[0 0.25 0.5]
+MF3='Moderado':'trapmf',[0.25 0.5 0.5 0.75]
+MF4='Malo':'trimf',[0.5 0.75 1]
+MF5='MuyMalo':'trapmf',[0.75 1 2 2]
+
+[Input2]
+Name='FactorConsecuencia'
+Range=[0 1]
+NumMFs=5
+MF1='MuyBajo':'trapmf',[-0.225 -0.025 0 0.25]
+MF2='Bajo':'trimf',[0 0.25 0.5]
+MF3='Medio':'trimf',[0.25 0.5 0.75]
+MF4='Alto':'trimf',[0.5 0.75 1]
+MF5='MuyAlto':'trapmf',[0.75 1 1.025 1.225]
+
+[Output1]
+Name='IndiceRiesgo'
+Range=[0 1]
+NumMFs=4
+MF1='Bajo':'trapmf',[-0.2224 -0.02235 0 0.33]
+MF2='Medio':'trimf',[0 0.33 0.66]
+MF3='Alto':'trimf',[0.33 0.66 1]
+MF4='Inaceptable':'trapmf',[0.66 1 1.9 2]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 1 (1) : 1
+1 4, 2 (1) : 1
+1 5, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+2 4, 2 (1) : 1
+2 5, 3 (1) : 1
+3 1, 1 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
+3 4, 3 (1) : 1
+3 5, 3 (1) : 1
+4 1, 2 (1) : 1
+4 2, 2 (1) : 1
+4 3, 3 (1) : 1
+4 4, 4 (1) : 1
+4 5, 4 (1) : 1
+5 1, 3 (1) : 1
+5 2, 3 (1) : 1
+5 3, 3 (1) : 1
+5 4, 4 (1) : 1
+5 5, 4 (1) : 1
+5 0, 4 (1) : 1
+0 5, 4 (1) : 1
+1 5, 1 (1) : 1
+5 1, 1 (1) : 1
